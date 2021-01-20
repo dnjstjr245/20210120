@@ -1,0 +1,9 @@
+<h1>회원등록</h1>
+<img src="http://115.85.182.104:8000/static/a.jpg" />
+{{res}}
+<form method='POST' action='/signup'>
+	{% csrf_token %}
+	username: <input type="text" name="username" />
+	email: <input type="text" name="email" />
+	<input type="submit" />
+</form>
