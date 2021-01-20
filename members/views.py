@@ -46,4 +46,13 @@ def login(req):
     if req.method == 'GET':
         return render(req, 'login.html')
     elif req.method == 'POST':
+        username = req.POST.get('uesername', None)
+        useremail = req.POST.get('ueseremail', None)
+
+        err = {}
+
+        if not (useremail and username) : 
+            err['err'] = '유효성이 잘못되었습니다.'
+            return render(req, 'login.html', err)
+
         return redirect('/')
