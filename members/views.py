@@ -42,17 +42,25 @@ def num_gugu(num):
     return str
 
 def login(req):
-    #print(dir(req))
+    print(dir(req))
     if req.method == 'GET':
         return render(req, 'login.html')
     elif req.method == 'POST':
-        username = req.POST.get('uesername', None)
-        useremail = req.POST.get('ueseremail', None)
+        username = req.POST.get('username', None)
+        useremail = req.POST.get('useremail', None)
 
         err = {}
 
         if not (useremail and username) : 
             err['err'] = '유효성이 잘못되었습니다.'
             return render(req, 'login.html', err)
+        else: 
+            member = Members.objects.get(username=username)
+
+            if useremail == member.useremail :
+                req.session['user'] = member.id 
+                return redirect('/members')
+                
+            return HttpResponse(f"<h1>{member.useremail}</h1>")
 
         return redirect('/')
