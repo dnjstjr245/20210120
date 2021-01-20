@@ -5,5 +5,6 @@ urlpatterns = [
     path('',views.index),
     path('test', views.test),
     path('signup', views.signup),
-    path('git',views.git)
+    path('git', views.git),
+    path('gugu', views.gu)
 ]
