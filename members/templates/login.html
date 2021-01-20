@@ -1,1 +1,8 @@
-<h1>로그인</h1>
+<h2>로그인</h2>
+
+<form method="post" action="/login">
+    {% csrf_token %}
+    id <input type="text" name="id" />
+    pw <input type="email" name="email" />
+    <input type="submit" />
+</form>
